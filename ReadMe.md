@@ -8,8 +8,28 @@ Things to Know:
 
 2)Dot is the name of product
 
-3)Server and Client dirs
+RUNNING EVERYTHING -----------------------------
+Microservices are basicaclly software as a sevice
 
+In current setup, two micro services run on two seperate servers. Look @ runApp in build.gradle
+-"gradle -Pm=c runApp" to run UserData Server 8981
+-"gradle -Pm=c -Pl=t runApp" to run Listing Server 8982
+-"gralde runApp" to run runClient
+
+User Data server will just return some static user data w/ contact info
+UserDataClient shows how to call service on java, for client or server. 
+
+dotClient makes call to UserData server and gets the static user data
+
+WHAT ABOUT CALLING MICROSERVICES FROM ANOTHER MICROSERVICE?
+Use the Client in a service file !
+
+Look @ ListingService ; notice how we instantiate UserDataClient.
+ASSUMPTION is made that the port passed in channel is where the sever serving the UserDataService is.
+
+We make call to get static user data, get contact info, return in the listing data response
+
+COPYING THE BOILERPLATE TO ANOTHER PROJECT -----------------------------
 
 Server:
 1) gradle init, update gradle build file
