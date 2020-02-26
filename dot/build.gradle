@@ -1,0 +1,67 @@
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+    id "com.google.protobuf" version "0.8.11"
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+ 
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:28.1-jre'
+
+    compile group: 'io.grpc', name: 'grpc-netty', version: '1.1.2'
+    compile group: 'io.grpc', name: 'grpc-protobuf', version: '1.1.2'
+    compile group: 'io.grpc', name: 'grpc-stub', version: '1.1.2'
+    compile group: 'io.grpc', name: 'grpc-services', version: '1.1.2'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+
+sourceSets {
+    main {
+        proto{
+            srcDir '${project.projectDir}/src/main/proto/'
+        }
+        java {
+            // include self written and generated code
+            srcDir 'build/generated/source/proto/main/java'
+            srcDir 'build/generated/source/proto/main/grpc'
+        }
+    }
+}
+
+protobuf {
+    // Configure the protoc executable
+    protoc {
+        // Download from repositories
+        artifact = 'com.google.protobuf:protoc:3.0.2'
+    }
+
+    // Configure the codegen plugins
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.1.2'
+        }
+    }
+
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+task runApp(type:JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = project.hasProperty("m") ? project.hasProperty("l") ? "dot.ListingServer" : "dot.UserDataServer" : "dot.runClient"
+}
+
+
+
