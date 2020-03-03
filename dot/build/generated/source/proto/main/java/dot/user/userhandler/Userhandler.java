@@ -30,6 +30,11 @@ public final class Userhandler {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_userhandler_User_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_userhandler_Location_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_userhandler_Location_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_userhandler_UserContactInfo_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -46,14 +51,17 @@ public final class Userhandler {
       "\n\021userhandler.proto\022\013userhandler\" \n\022GetU" +
       "serDataRequest\022\n\n\002id\030\001 \001(\005\"7\n\023GetUserDat" +
       "aResponse\022 \n\005users\030\001 \003(\0132\021.userhandler.U" +
-      "ser\"b\n\004User\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n" +
-      "\004city\030\004 \001(\t\0222\n\014contact_info\030\003 \001(\0132\034.user" +
-      "handler.UserContactInfo\"M\n\017UserContactIn" +
-      "fo\022\017\n\005email\030\001 \001(\tH\000\022\026\n\014phone_number\030\002 \001(" +
-      "\003H\000B\021\n\017contact_details2a\n\013UserHandler\022R\n" +
-      "\013getUserData\022\037.userhandler.GetUserDataRe" +
-      "quest\032 .userhandler.GetUserDataResponse\"",
-      "\000B\030\n\024dot.user.userhandlerP\001b\006proto3"
+      "ser\"\220\001\n\004User\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014" +
+      "\n\004city\030\004 \001(\t\0222\n\014contact_info\030\003 \001(\0132\034.use" +
+      "rhandler.UserContactInfo\022,\n\ruser_locatio" +
+      "n\030\005 \001(\0132\025.userhandler.Location\"/\n\010Locati" +
+      "on\022\021\n\tlongitude\030\001 \001(\005\022\020\n\010latitude\030\002 \001(\005\"" +
+      "M\n\017UserContactInfo\022\017\n\005email\030\001 \001(\tH\000\022\026\n\014p" +
+      "hone_number\030\002 \001(\003H\000B\021\n\017contact_details2a",
+      "\n\013UserHandler\022R\n\013getUserData\022\037.userhandl" +
+      "er.GetUserDataRequest\032 .userhandler.GetU" +
+      "serDataResponse\"\000B\030\n\024dot.user.userhandle" +
+      "rP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -84,9 +92,15 @@ public final class Userhandler {
     internal_static_userhandler_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userhandler_User_descriptor,
-        new java.lang.String[] { "Id", "Name", "City", "ContactInfo", });
-    internal_static_userhandler_UserContactInfo_descriptor =
+        new java.lang.String[] { "Id", "Name", "City", "ContactInfo", "UserLocation", });
+    internal_static_userhandler_Location_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_userhandler_Location_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_userhandler_Location_descriptor,
+        new java.lang.String[] { "Longitude", "Latitude", });
+    internal_static_userhandler_UserContactInfo_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_userhandler_UserContactInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userhandler_UserContactInfo_descriptor,

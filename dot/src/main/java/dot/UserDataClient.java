@@ -41,8 +41,8 @@ public class UserDataClient {
     asyncStub = UserHandlerGrpc.newStub(channel);
   }
 
-  public void getUserData(){
-	   handleRequest(GetUserDataRequest.getDefaultInstance());
+  public GetUserDataResponse getUserData(){
+	   return handleRequest(GetUserDataRequest.getDefaultInstance());
   }
 
   public GetUserDataResponse getUserData(int user_id){

@@ -24,6 +24,12 @@ message User {
  	string name = 2;
  	string city = 4;
  	UserContactInfo contact_info = 3;
+ 	Location user_location = 5;
+}
+
+message Location{
+	int32 longitude = 1;
+	int32 latitude = 2;
 }
 
 message UserContactInfo {

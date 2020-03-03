@@ -1,6 +1,7 @@
 package dot;
 
 import dot.user.userhandler.User;
+import dot.user.userhandler.Location;
 import dot.user.userhandler.UserContactInfo;
 import dot.user.userhandler.GetUserDataRequest;
 import dot.user.userhandler.GetUserDataResponse;
@@ -21,7 +22,8 @@ import io.grpc.stub.StreamObserver;
     public void getUserData(GetUserDataRequest request, StreamObserver<GetUserDataResponse> responseObserver){
       System.out.println("get uesr data called");
       responseObserver.onNext(GetUserDataResponse.newBuilder().addUsers(
-        User.newBuilder().setName("KUNAL PUROHNIT 3").setCity("SV").setId(request.getId()).setContactInfo(
+        User.newBuilder().setName("KUNAL PUROHNIT 3").setCity("SV").setId(request.getId()).setUserLocation(
+          Location.newBuilder().setLatitude(101).build()).setContactInfo(
           UserContactInfo.newBuilder().setPhoneNumber(12345).build()).build()
         ).build());
       responseObserver.onCompleted();

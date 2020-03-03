@@ -11,7 +11,7 @@ import dot.ListingClient;
 public class runClient {
 /** Issues several different requests and then exits. */
   public static void main(String[] args) throws InterruptedException {
-    String target = "localhost:8982";
+    String target = "localhost:8981";
     if (args.length > 0) {
       if ("--help".equals(args[0])) {
         System.err.println("Usage: [target]");
@@ -24,9 +24,10 @@ public class runClient {
 
     ManagedChannel channel = ManagedChannelBuilder.forTarget(target).usePlaintext(true).build();
     try {
-      ListingClient client = new ListingClient(channel);
+
+      UserDataClient client = new UserDataClient(channel);
       
-      client.getListingData();
+      client.getUserData();
 
 
     } finally {

@@ -44,4 +44,17 @@ public interface UserOrBuilder extends
    * <code>optional .userhandler.UserContactInfo contact_info = 3;</code>
    */
   dot.user.userhandler.UserContactInfoOrBuilder getContactInfoOrBuilder();
+
+  /**
+   * <code>optional .userhandler.Location user_location = 5;</code>
+   */
+  boolean hasUserLocation();
+  /**
+   * <code>optional .userhandler.Location user_location = 5;</code>
+   */
+  dot.user.userhandler.Location getUserLocation();
+  /**
+   * <code>optional .userhandler.Location user_location = 5;</code>
+   */
+  dot.user.userhandler.LocationOrBuilder getUserLocationOrBuilder();
 }

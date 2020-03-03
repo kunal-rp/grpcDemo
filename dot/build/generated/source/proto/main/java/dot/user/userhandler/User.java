@@ -75,6 +75,19 @@ public  final class User extends
             city_ = s;
             break;
           }
+          case 42: {
+            dot.user.userhandler.Location.Builder subBuilder = null;
+            if (userLocation_ != null) {
+              subBuilder = userLocation_.toBuilder();
+            }
+            userLocation_ = input.readMessage(dot.user.userhandler.Location.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(userLocation_);
+              userLocation_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -196,6 +209,27 @@ public  final class User extends
     return getContactInfo();
   }
 
+  public static final int USER_LOCATION_FIELD_NUMBER = 5;
+  private dot.user.userhandler.Location userLocation_;
+  /**
+   * <code>optional .userhandler.Location user_location = 5;</code>
+   */
+  public boolean hasUserLocation() {
+    return userLocation_ != null;
+  }
+  /**
+   * <code>optional .userhandler.Location user_location = 5;</code>
+   */
+  public dot.user.userhandler.Location getUserLocation() {
+    return userLocation_ == null ? dot.user.userhandler.Location.getDefaultInstance() : userLocation_;
+  }
+  /**
+   * <code>optional .userhandler.Location user_location = 5;</code>
+   */
+  public dot.user.userhandler.LocationOrBuilder getUserLocationOrBuilder() {
+    return getUserLocation();
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -220,6 +254,9 @@ public  final class User extends
     if (!getCityBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, city_);
     }
+    if (userLocation_ != null) {
+      output.writeMessage(5, getUserLocation());
+    }
   }
 
   public int getSerializedSize() {
@@ -240,6 +277,10 @@ public  final class User extends
     }
     if (!getCityBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, city_);
+    }
+    if (userLocation_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, getUserLocation());
     }
     memoizedSize = size;
     return size;
@@ -268,6 +309,11 @@ public  final class User extends
       result = result && getContactInfo()
           .equals(other.getContactInfo());
     }
+    result = result && (hasUserLocation() == other.hasUserLocation());
+    if (hasUserLocation()) {
+      result = result && getUserLocation()
+          .equals(other.getUserLocation());
+    }
     return result;
   }
 
@@ -287,6 +333,10 @@ public  final class User extends
     if (hasContactInfo()) {
       hash = (37 * hash) + CONTACT_INFO_FIELD_NUMBER;
       hash = (53 * hash) + getContactInfo().hashCode();
+    }
+    if (hasUserLocation()) {
+      hash = (37 * hash) + USER_LOCATION_FIELD_NUMBER;
+      hash = (53 * hash) + getUserLocation().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -418,6 +468,12 @@ public  final class User extends
         contactInfo_ = null;
         contactInfoBuilder_ = null;
       }
+      if (userLocationBuilder_ == null) {
+        userLocation_ = null;
+      } else {
+        userLocation_ = null;
+        userLocationBuilder_ = null;
+      }
       return this;
     }
 
@@ -447,6 +503,11 @@ public  final class User extends
         result.contactInfo_ = contactInfo_;
       } else {
         result.contactInfo_ = contactInfoBuilder_.build();
+      }
+      if (userLocationBuilder_ == null) {
+        result.userLocation_ = userLocation_;
+      } else {
+        result.userLocation_ = userLocationBuilder_.build();
       }
       onBuilt();
       return result;
@@ -502,6 +563,9 @@ public  final class User extends
       }
       if (other.hasContactInfo()) {
         mergeContactInfo(other.getContactInfo());
+      }
+      if (other.hasUserLocation()) {
+        mergeUserLocation(other.getUserLocation());
       }
       onChanged();
       return this;
@@ -808,6 +872,123 @@ public  final class User extends
         contactInfo_ = null;
       }
       return contactInfoBuilder_;
+    }
+
+    private dot.user.userhandler.Location userLocation_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        dot.user.userhandler.Location, dot.user.userhandler.Location.Builder, dot.user.userhandler.LocationOrBuilder> userLocationBuilder_;
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public boolean hasUserLocation() {
+      return userLocationBuilder_ != null || userLocation_ != null;
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public dot.user.userhandler.Location getUserLocation() {
+      if (userLocationBuilder_ == null) {
+        return userLocation_ == null ? dot.user.userhandler.Location.getDefaultInstance() : userLocation_;
+      } else {
+        return userLocationBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public Builder setUserLocation(dot.user.userhandler.Location value) {
+      if (userLocationBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        userLocation_ = value;
+        onChanged();
+      } else {
+        userLocationBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public Builder setUserLocation(
+        dot.user.userhandler.Location.Builder builderForValue) {
+      if (userLocationBuilder_ == null) {
+        userLocation_ = builderForValue.build();
+        onChanged();
+      } else {
+        userLocationBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public Builder mergeUserLocation(dot.user.userhandler.Location value) {
+      if (userLocationBuilder_ == null) {
+        if (userLocation_ != null) {
+          userLocation_ =
+            dot.user.userhandler.Location.newBuilder(userLocation_).mergeFrom(value).buildPartial();
+        } else {
+          userLocation_ = value;
+        }
+        onChanged();
+      } else {
+        userLocationBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public Builder clearUserLocation() {
+      if (userLocationBuilder_ == null) {
+        userLocation_ = null;
+        onChanged();
+      } else {
+        userLocation_ = null;
+        userLocationBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public dot.user.userhandler.Location.Builder getUserLocationBuilder() {
+      
+      onChanged();
+      return getUserLocationFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    public dot.user.userhandler.LocationOrBuilder getUserLocationOrBuilder() {
+      if (userLocationBuilder_ != null) {
+        return userLocationBuilder_.getMessageOrBuilder();
+      } else {
+        return userLocation_ == null ?
+            dot.user.userhandler.Location.getDefaultInstance() : userLocation_;
+      }
+    }
+    /**
+     * <code>optional .userhandler.Location user_location = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        dot.user.userhandler.Location, dot.user.userhandler.Location.Builder, dot.user.userhandler.LocationOrBuilder> 
+        getUserLocationFieldBuilder() {
+      if (userLocationBuilder_ == null) {
+        userLocationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            dot.user.userhandler.Location, dot.user.userhandler.Location.Builder, dot.user.userhandler.LocationOrBuilder>(
+                getUserLocation(),
+                getParentForChildren(),
+                isClean());
+        userLocation_ = null;
+      }
+      return userLocationBuilder_;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
